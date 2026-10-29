@@ -1,0 +1,131 @@
+.count {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  font-size: 13px;
+  background: #e8edfa;
+  color: #4563ba;
+  border-radius: 20px;
+  padding: 4px 10px;
+  letter-spacing: 0;
+}
+.table-panel {
+  background: white;
+  border: 1px solid #e3e7ef;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.table-tools {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+}
+.table-tools h2 {
+  font-size: 16px;
+  margin: 0 0 7px;
+}
+.table-tools p {
+  margin: 0;
+  font-size: 12px;
+}
+.table-tools mat-form-field {
+  width: 310px;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  min-width: 690px;
+}
+th {
+  background: #f8f9fc !important;
+  color: #727c90;
+  font-size: 12px;
+}
+td {
+  color: #566078;
+  font-size: 13px;
+  height: 76px;
+}
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.user-cell strong {
+  font-weight: 550;
+  color: #33415e;
+}
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #eef1f9;
+  color: #667ba8;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+.sex-badge {
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: #5474ad;
+  background: #eff4fb;
+}
+.sex-badge.female {
+  color: #8868ad;
+  background: #f5effb;
+}
+.actions {
+  display: flex;
+  gap: 2px;
+}
+.actions svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.actions a {
+  color: #607499;
+}
+.delete-action {
+  color: #b66e75;
+}
+.no-data {
+  text-align: center;
+  padding: 50px 24px;
+}
+.list-note {
+  color: #8a94a5;
+  font-size: 11px;
+  margin-top: 18px;
+}
+@media (max-width: 650px) {
+  .table-tools {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .table-tools mat-form-field {
+    width: 100%;
+  }
+}
+
+.sex-badge.female {
+  color: #4568aa;
+  background: #e9efff;
+}
+.delete-action {
+  color: #3f51b5;
+}
+.user-photo {
+  object-fit: cover;
+}

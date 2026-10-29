@@ -1,0 +1,84 @@
+.login-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 20px;
+  background: radial-gradient(ellipse at top left, #e8eefb, transparent 65%), #f6f7fb;
+}
+.login-card {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  padding: 42px 38px 30px;
+  border: 1px solid #e1e5ef;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 16px 56px #29385b0b;
+}
+.brand {
+  position: absolute;
+  left: 26px;
+  top: 22px;
+  font-size: 24px;
+  font-weight: 800;
+}
+.brand span {
+  color: #4163d6;
+}
+.avatar {
+  display: block;
+  margin: 8px auto 24px;
+}
+h1 {
+  font-size: 27px;
+  margin: 9px 0;
+  letter-spacing: -0.8px;
+}
+form {
+  display: grid;
+  margin-top: 30px;
+}
+button {
+  height: 48px;
+}
+.demo {
+  margin-top: 26px;
+  padding: 15px 8px;
+  border-radius: 10px;
+  background: #f5f7fc;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #5f6980;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.footer-note {
+  color: #7c8598;
+  font-size: 12px;
+  margin-top: 24px;
+}
+@media (max-width: 480px) {
+  .login-card {
+    padding: 36px 22px 24px;
+  }
+}
+
+/* Identidad azul de App users. */
+.brand {
+  color: #3f51b5;
+  font-size: 19px;
+}
+.avatar {
+  object-fit: contain;
+  margin-top: 25px;
+  border-radius: 16px;
+}

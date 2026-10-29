@@ -1,0 +1,46 @@
+<p class="eyebrow">ESPACIO DE TRABAJO / REPORTES</p>
+<div class="page-heading">
+  <div>
+    <h1>Reportes</h1>
+    <p class="page-description">Una vista general de los usuarios registrados.</p>
+  </div>
+  <button mat-flat-button (click)="download()" [disabled]="!report.total">Descargar CSV</button>
+</div>
+<section class="summary" aria-label="Resumen de usuarios">
+  <article class="metric primary">
+    <p>Total de usuarios</p>
+    <strong>{{ report.total }}</strong
+    ><span>Registros en esta sesión</span>
+  </article>
+  @for (item of report.distribution; track item.sex) {
+    <article class="metric">
+      <p>{{ item.sex }}</p>
+      <strong>{{ item.count }}</strong
+      ><span>{{ item.percentage }} % del total</span>
+    </article>
+  }
+</section>
+<section class="distribution" aria-labelledby="distribution-title">
+  <h2 id="distribution-title">Distribución por sexo</h2>
+  @if (report.total) {
+    <p class="muted">Proporción de cada grupo en el total de usuarios.</p>
+    @for (item of report.distribution; track item.sex) {
+      <div class="distribution-row">
+        <div class="bar-label">
+          <span>{{ item.sex }}</span
+          ><strong>{{ item.count }} usuarios · {{ item.percentage }} %</strong>
+        </div>
+        <div class="bar-track" aria-hidden="true">
+          <div
+            class="bar-fill"
+            [class.secondary]="item.sex === 'Femenino'"
+            [style.width.%]="item.percentage"
+          ></div>
+        </div>
+      </div>
+    }
+  } @else {
+    <p class="muted">Todavía no hay usuarios para generar un reporte.</p>
+  }
+  <a mat-stroked-button routerLink="/dashboard/usuarios">Administrar usuarios</a>
+</section>

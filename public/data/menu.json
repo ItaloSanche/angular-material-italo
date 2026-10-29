@@ -1,0 +1,5 @@
+[
+  { "label": "Dashboard", "path": "/dashboard/inicio", "symbol": "◫" },
+  { "label": "Usuarios", "path": "/dashboard/usuarios", "symbol": "♙" },
+  { "label": "Reportes", "path": "/dashboard/reportes", "symbol": "▤" }
+]

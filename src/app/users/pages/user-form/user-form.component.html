@@ -1,0 +1,117 @@
+<p class="eyebrow">ESPACIO DE TRABAJO / USUARIOS</p>
+<h1>{{ title }}</h1>
+<p class="page-description">
+  {{
+    readOnly
+      ? 'Consulta la información del usuario.'
+      : 'Completa los datos personales obligatorios. La foto y la ficha de salud son opcionales.'
+  }}
+</p>
+@if (missing()) {
+  <section class="empty-panel">
+    <h2>Usuario no encontrado</h2>
+    <p>El registro no existe o ya fue eliminado.</p>
+    <a mat-flat-button routerLink="/dashboard/usuarios">Volver a usuarios</a>
+  </section>
+} @else {
+  <section class="form-panel">
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="fields">
+        <h2>Información personal</h2>
+        <mat-form-field appearance="outline"
+          ><mat-label>Usuario</mat-label
+          ><input matInput formControlName="username" autocomplete="off" /><mat-error
+            >Ingresa un usuario válido.</mat-error
+          ></mat-form-field
+        >
+        <mat-form-field appearance="outline"
+          ><mat-label>Nombre</mat-label
+          ><input matInput formControlName="firstName" autocomplete="given-name" /><mat-error
+            >El nombre es obligatorio.</mat-error
+          ></mat-form-field
+        >
+        <mat-form-field appearance="outline"
+          ><mat-label>Apellido</mat-label
+          ><input matInput formControlName="lastName" autocomplete="family-name" /><mat-error
+            >El apellido es obligatorio.</mat-error
+          ></mat-form-field
+        >
+        <mat-form-field appearance="outline"
+          ><mat-label>Sexo</mat-label
+          ><mat-select formControlName="sex"
+            ><mat-option value="Masculino">Masculino</mat-option
+            ><mat-option value="Femenino">Femenino</mat-option></mat-select
+          ><mat-error>Selecciona el sexo.</mat-error></mat-form-field
+        >
+        <h2>Ficha de salud</h2>
+        <mat-form-field appearance="outline"
+          ><mat-label>Estado de salud</mat-label
+          ><textarea
+            matInput
+            formControlName="healthStatus"
+            rows="2"
+            maxlength="2000"
+            placeholder="Describe el estado actual"
+          ></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+          ><mat-label>Alergias</mat-label
+          ><textarea matInput formControlName="allergies" rows="2" maxlength="2000"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+          ><mat-label>Antecedentes clínicos</mat-label
+          ><textarea matInput formControlName="medicalHistory" rows="4" maxlength="2000"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+          ><mat-label>Observaciones y tratamiento</mat-label
+          ><textarea matInput formControlName="medicalNotes" rows="4" maxlength="2000"></textarea>
+        </mat-form-field>
+        <div class="form-actions">
+          <a mat-stroked-button routerLink="/dashboard/usuarios">Volver</a>
+          @if (!readOnly) {
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="form.invalid || saving() || photoLoading()"
+            >
+              Aceptar
+            </button>
+          }
+        </div>
+      </div>
+      <div class="profile-photo">
+        <h2>Foto del usuario</h2>
+        <img
+          [src]="photoUrl() || 'images/users.jfif'"
+          width="180"
+          height="180"
+          [class.has-photo]="!!photoUrl()"
+          alt="Foto del usuario"
+        />
+        @if (!readOnly) {
+          <input
+            #photoInput
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            (change)="selectPhoto($event)"
+            hidden
+          />
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="photoInput.click()"
+            [disabled]="photoLoading()"
+          >
+            {{ photoLoading() ? 'Cargando…' : 'Seleccionar foto' }}
+          </button>
+          @if (photoUrl()) {
+            <button mat-button type="button" (click)="photoUrl.set('')" [disabled]="photoLoading()">
+              Quitar foto
+            </button>
+          }
+          <p>JPG, PNG o WebP · Máximo 2 MB</p>
+        }
+      </div>
+    </form>
+  </section>
+}

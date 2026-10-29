@@ -1,0 +1,39 @@
+<main class="login-page">
+  <section class="login-card" aria-labelledby="login-title">
+    <span class="brand">App users</span
+    ><img src="images/users.jfif" width="120" height="120" alt="" class="avatar" />
+    <p class="eyebrow">GESTIÓN DE USUARIOS</p>
+    <h1 id="login-title">Bienvenido de nuevo</h1>
+    <p class="muted">Ingresa para administrar tus usuarios.</p>
+    <form [formGroup]="form" (ngSubmit)="signIn()" [attr.aria-busy]="loading()">
+      <mat-form-field appearance="outline"
+        ><mat-label>Usuario</mat-label
+        ><input matInput formControlName="username" autocomplete="username" /><mat-error
+          >Ingresa tu usuario.</mat-error
+        ></mat-form-field
+      >
+      <mat-form-field appearance="outline"
+        ><mat-label>Contraseña</mat-label
+        ><input
+          matInput
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+        /><mat-error>Ingresa tu contraseña.</mat-error></mat-form-field
+      >
+      <button mat-flat-button type="submit" [disabled]="form.invalid || loading()">
+        {{ loading() ? 'Ingresando…' : 'Ingresar' }}
+      </button>
+      @if (loading()) {
+        <div class="loading" role="status">
+          <mat-spinner diameter="24" /><span>Validando acceso…</span>
+        </div>
+      }
+    </form>
+    <div class="demo">
+      <strong>Acceso de demostración</strong><br />Usuarios: <code>jperez</code> o
+      <code>italosanchez</code> · Contraseña:
+      <code>admin123</code>
+    </div>
+  </section>
+</main>

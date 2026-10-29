@@ -1,0 +1,22 @@
+<a class="skip-link" href="#content" (click)="$event.preventDefault(); content.focus()"
+  >Saltar al contenido</a
+>
+<div class="app-shell">
+  <header class="topbar">
+    <a routerLink="/dashboard" class="logo">App users</a>
+    <nav aria-label="Navegación principal">
+      @for (item of menu$ | async; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" ariaCurrentWhenActive="page">{{
+          item.label
+        }}</a>
+      }
+    </nav>
+    <button mat-button class="sign-out" (click)="signOut()" aria-label="Cerrar sesión">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10 4H4v16h6M14 8l4 4-4 4M8 12h12" />
+      </svg>
+      <span>Salir</span>
+    </button>
+  </header>
+  <main #content id="content" tabindex="-1"><router-outlet /></main>
+</div>
